@@ -4,7 +4,7 @@ const cors = require('cors');
 const { TodoModel, TodoSchema } = require('./Models/todos');
 const path = require('path')
 
-const __dirname = path.resolve();
+//const __dirname = path.resolve();
 const app = express();
 
 //app.use(express.static(path.join(__dirname, '../client')));
