@@ -5,12 +5,25 @@ function Create() {
   const [task, setTask] = useState('');
 
   const handleAdd = () => {
-    axios.post('http://localhost:3000/add', { task: task })
+    fetch('/api/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ task: task }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(result => {
-        location.reload()
+        location.reload();
       })
       .catch(err => console.log(err));
   };
+  
 
   return (
     <div className='create_form'>
