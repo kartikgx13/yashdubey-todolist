@@ -2,9 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { TodoModel, TodoSchema } = require('./Models/todos');
-//const path = require('path')
+const path = require('path')
 
-//const __dirname = path.resolve();
+const __dirname = path.resolve();
 const app = express();
 
 //app.use(express.static(path.join(__dirname, '../client')));
@@ -12,11 +12,11 @@ const app = express();
 //    res.sendFile(path.join(__dirname, '../client', 'index.html'));
 //});
 //
-//app.use(express.static(path.join(__dirname, '/client/dist')));
-//
-//app.get('*', (req, res) => {
-//  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-//});
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
 
 app.use(express.json());
 
